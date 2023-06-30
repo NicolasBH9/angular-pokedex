@@ -5,6 +5,7 @@ import {Observable, of, delay} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoryService {
   /*
   categories = [
@@ -42,5 +43,9 @@ export class CategoryService {
   getPokemonTypes(): Observable<any>{
     //return of(this.categories).pipe(delay(5000));
     return this.http.get("https://pokeapi.co/api/v2/type");
+  }
+
+  getPokemonDetailsType(id: number): Observable<any>{
+    return this.http.get(`https://pokeapi.co/api/v2/type/${id}`)
   }
 }
