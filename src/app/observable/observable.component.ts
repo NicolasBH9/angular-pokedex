@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-observable',
   templateUrl: './observable.component.html',
   styleUrls: ['./observable.component.scss']
 })
-export class ObservableComponent implements OnInit {
+export class ObservableComponent implements OnInit, OnDestroy{
 
   constructor() { }
 
@@ -29,6 +29,8 @@ export class ObservableComponent implements OnInit {
     
   })
 
+  suscriber:Subscription;
+
   ngOnInit(): void {
    this.obs.subscribe({
     next: (value)=>console.log(value),
@@ -36,6 +38,12 @@ export class ObservableComponent implements OnInit {
     complete:() => console.log('El observer ha finalizado')
    })
    
+  }
+
+  ngOnDestroy(): void {
+    if(this.suscriber){
+      this.suscriber.unsubscribe();
+    }
   }
 
 }

@@ -1,10 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Observable, of, delay} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-
+  /*
   categories = [
     {
       id: '1',
@@ -31,12 +33,14 @@ export class CategoryService {
         'https://ui-avatars.com/api/?font-size=0.33&size=300&name=poison',
     },
   ];
+  */
 
-  constructor() {
+  constructor(private http:HttpClient) {
    
   }
 
-  getPokemonTypes():any{
-    return this.categories;
+  getPokemonTypes(): Observable<any>{
+    //return of(this.categories).pipe(delay(5000));
+    return this.http.get("https://pokeapi.co/api/v2/type");
   }
 }
