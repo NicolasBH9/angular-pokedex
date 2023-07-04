@@ -16,10 +16,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatGridListModule,
     RouterModule.forChild([
       {path:'pokemon-list', component: PokemonListComponent},
-      {
-        path:'pokemon-list-component/id', component: PokemonListByTypeComponent
-      }
-    ])
-  ]
+      {path:'pokemon-list-by-type/:id', component: PokemonListByTypeComponent},
+    ]),
+  ],
 })
 export class PokemonsModule { }

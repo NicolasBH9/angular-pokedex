@@ -9,14 +9,13 @@ import { CategoryService } from 'src/app/category.service';
 })
 export class PokemonListByTypeComponent implements OnInit {
 
-  pokemonList =[];
+  pokemonList:any;
 
   constructor(
     private categoryService: CategoryService,
     private activateRoute: ActivatedRoute
   ) {
    
-
   }
 
   ngOnInit(): void {
