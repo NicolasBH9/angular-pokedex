@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class StatisticsService {
-  private socket:any; 
-  public battleStatisticsMessage = new Subject<string>();
+  private socket$:any; 
+  public battleStatisticsMessage$ = new Subject<string>();
 
   //Subject -> Convertir infromación en stream
   // .next -> Enviar información
@@ -19,20 +19,34 @@ export class StatisticsService {
   constructor() { }
 
   public connect(): void{
-    this.socket = this.getNewWebSocket();
-    this.socket.subscribe({
+    this.socket$ = this.getNewWebSocket();
+    this.socket$.subscribe({
       next:(data:any)=>{
-        this.battleStatisticsMessage.next(JSON.stringify(data))
+        this.battleStatisticsMessage$.next(JSON.stringify(data))
       }
     })
 
   }
 
   private getNewWebSocket(){
-    return webSocket(environment.pokeStatisticsUrl)
+    return webSocket({
+      url: environment.pokeStatisticsUrl,
+      openObserver:{
+        next: () => {
+          console.log('WebSocket connected')
+        },
+      },
+      closeObserver:{
+        next:() =>{
+          console.log('Socket se ha cerrado');
+          this.socket$ = undefined;
+          //this.connect(); usar con cuidado
+        },
+      },
+    });
   }
 
   close(){
-    this.socket.complete();
+    this.socket$.complete();
   }
 }
