@@ -15,6 +15,8 @@ import { CategoryListComponent } from './categories/category-list/category-list.
 import { PokemonListComponent } from './pokemons/pokemon-list/pokemon-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PokemonsModule } from './pokemons/pokemons.module';
+import { StatisticsListComponent } from './statistics/statistics-list/statistics-list.component';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { PokemonsModule } from './pokemons/pokemons.module';
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
+    StatisticsModule,
     CategoriesModule,
     PokemonsModule,
     RouterModule.forRoot([
