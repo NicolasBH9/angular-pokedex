@@ -17,6 +17,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { StatisticsListComponent } from './statistics/statistics-list/statistics-list.component';
 import { StatisticsModule } from './statistics/statistics.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,9 +40,12 @@ import { StatisticsModule } from './statistics/statistics.module';
     StatisticsModule,
     CategoriesModule,
     PokemonsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
     RouterModule.forRoot([
-      { path: '**', component: PageNotFoundComponent },
       { path: '', redirectTo: 'category-list', pathMatch: 'full' },
+      { path: '**', component: PageNotFoundComponent },
     ]),
   ],
   providers: [],

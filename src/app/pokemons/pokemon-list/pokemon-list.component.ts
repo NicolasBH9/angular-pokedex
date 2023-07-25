@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { PokemonService } from 'src/app/pokemon.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { PokemonService } from 'src/app/pokemon.service';
 export class PokemonListComponent implements OnInit {
   pokemonIds: any[];
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(
+    private pokemonService: PokemonService,
+    private firestore: AngularFirestore
+  ) { }
 
   ngOnInit(): void {
     this.pokemonService.getPokemonList().subscribe( {
