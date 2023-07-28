@@ -9,6 +9,13 @@ import { MatCardModule } from '@angular/material/card';
 import { PokemonFavoriteComponent } from './pokemon-favorite/pokemon-favorite.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+import { PokemonDetailPageComponent } from './pokemon-detail-page/pokemon-detail-page.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PokemonAddCommentComponent } from './pokemon-add-comment/pokemon-add-comment.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -17,12 +24,18 @@ import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
     PokemonDetailComponent,
     PokemonFavoriteComponent,
     MyFavoritesComponent,
+    PokemonDetailPageComponent,
+    PokemonAddCommentComponent,
   ],
   imports: [
     CommonModule,
     MatGridListModule,
+    MatDialogModule,
     MatCardModule,
     MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
     RouterModule.forChild([
       { path: 'pokemon-list', component: PokemonListComponent },
       {
@@ -32,6 +45,10 @@ import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
       {
         path: 'pokemon-list-by-type/:id',
         component: PokemonListByTypeComponent,
+      },
+      {
+        path: 'pokemon-details/:id',
+        component: PokemonDetailPageComponent,
       },
     ]),
   ],
