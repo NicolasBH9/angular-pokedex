@@ -7,6 +7,10 @@
             <a mat-button routerLinkActive="active" routerLink="/pokemon-list"> Pokemons </a>
             <a mat-button routerLinkActive="active" routerLink="/statistics-list"> Estadísticas </a>
             <a mat-button routerLinkActive="active" routerLink="/pokemon-my-favorites"> Favoritos </a>
+        
+            <button mat-fab color="primary" *ngIf="userData">
+                {{userData}}
+            </button>
         </div>
     </mat-toolbar-row>
 

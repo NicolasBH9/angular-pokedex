@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatProgressBarModule,
     RouterModule.forChild([
-      { path: 'category-list', component: CategoryListComponent },
+      { path: 'category-list', component: CategoryListComponent, canActivate:[] },
     ]),
   ],
   exports: [CategoryListComponent, CategoryCardComponent],
